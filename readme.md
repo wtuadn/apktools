@@ -47,3 +47,5 @@ set buildTool=26.0.2 buildTool版本（最好和你工程的一样，并且只�
    对其应用相关功能并安装后观察apk的大小、splash和渠道名称的变化
 1. 压缩率取决于apk里的文件，可高可低
 1. 理论上可以替换可见的任意资源，更多用法请自行探索
+1. 目前只有windows版，需要linux、mac版的可以将7z替换成linux、unix版的，<br>
+   并把bat改为由shell实现
