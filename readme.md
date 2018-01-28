@@ -40,7 +40,7 @@ set buildTool=26.0.2 buildTool版本（最好和你工程的一样，并且只�
 渠道名放在assets\channel 在代码里使用ChannelUtils.getChannel()获取
 
 #### 说明
-1. 签名同时采用v1和v2，兼容新旧android版本
+1. 签名同时采用v1和v2，兼容新旧android版本，并进行了zipalign
 1. compress.bat和add_channel.bat依赖于sign.bat，压缩和修改资源和会自动进行签名
 1. 修改资源后的apk在apktools\outputs里
 1. demo工程生成的app-release.apk已放在apktools目录下，是默认的splash和渠道，<br>

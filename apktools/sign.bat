@@ -1,6 +1,8 @@
 set oPath=%~d0%~p0
 set apk=%1
 
+if exist %oPath%%apk% set apk=%oPath%%apk%
+
 set keyPath=%oPath%key
 set alias=alias1
 set storePass=000000
