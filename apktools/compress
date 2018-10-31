@@ -1,0 +1,12 @@
+#!/bin/bash
+oPath=$(cd `dirname $0`; pwd)/
+tempPath=${oPath}temp/
+apk=$1
+
+if [ -f $oPath$apk ]; then apk=$oPath$apk; fi
+
+rm -rf $tempPath
+7z x $apk -o$tempPath
+7z a $apk $tempPath* -mx=9
+rm -rf $tempPath
+sh ${oPath}sign $apk

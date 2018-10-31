@@ -1,0 +1,21 @@
+#!/bin/bash
+oPath=$(cd `dirname $0`; pwd)/
+channelPath=${oPath}channels/
+outputPath=${oPath}outputs/
+apk=$1
+
+if [ -f $oPath$apk ]; then apk=$oPath$apk; fi
+
+apkName=${apk%.*}
+apkName=${apkName##*/}
+
+rm -rf $outputPath
+mkdir $outputPath
+
+for channel in `ls $channelPath`
+do
+    output=${outputPath}${apkName}-${channel}.apk
+    cp $apk $output
+    7z a $output ${channelPath}${channel}/* -mx=9
+    sh ${oPath}sign $output
+done

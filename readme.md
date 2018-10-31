@@ -1,23 +1,23 @@
 # apktools
-一款apk签名、压缩、修改资源的工具，可用于生成渠道包
+一款apk签名、压缩、修改资源的工具，可用于生成渠道包，提供bat和shell命令
 
 ### 原理
 利用[7z](https://sparanoid.com/lab/7z/)压缩、修改apk，再用apksigner重新签名
 
 ### 主要功能
-> 用命令sign xxx.apk 对apk签名
+> 用命令 sign xxx.apk 对apk签名
 
-> 用命令compress xxx.apk 压缩apk
+> 用命令 compress xxx.apk 压缩apk
 
-> 在apktools目录下放一个apk文件，双击add_channel.bat修改apk的资源
+> 用命令 add_channel xxx.apk 修改apk的资源
 
 > 以上功能可以分开、组合使用
 
 ##### 相关配置
-配置android sdk环境变量，能用where adb命令找到adb所在路径
+配置android sdk环境变量，能在命令行找到adb命令，使用shell命令需要能找到7z命令
 <br>
 <br>
-修改sign.bat里的如下变量
+修改sign或sign.bat里的如下变量
 
 set keyPath=%oPath%key 签名用的密钥的绝对路径（直接复制到apktools目录改名为key，这行就不用管了）
 <br>
@@ -27,7 +27,7 @@ set storePass=000000 密钥库密码
 <br>
 set aliasPass=111111 别名密码
 <br>
-set buildTool=26.0.2 buildTool版本（最好和你工程的一样，并且只支持25及以上）
+set buildTool=28.0.3 buildTool版本（最好和你工程的一样，并且只支持25及以上）
 <br>
 <br>
 在channels文件夹下，每个渠道一个文件夹，里面放需要替换的资源文件，<br>
@@ -41,11 +41,9 @@ set buildTool=26.0.2 buildTool版本（最好和你工程的一样，并且只�
 
 #### 说明
 1. 签名同时采用v1和v2，兼容新旧android版本，并进行了zipalign
-1. compress.bat和add_channel.bat依赖于sign.bat，压缩和修改资源和会自动进行签名
+1. compress命令和add_channel命令依赖于sign命令，压缩和修改资源和会自动进行签名
 1. 修改资源后的apk在apktools\outputs里
 1. demo工程生成的app-release.apk已放在apktools目录下，是默认的splash和渠道，<br>
    对其应用相关功能并安装后观察apk的大小、splash和渠道名称的变化
 1. 压缩率取决于apk里的文件，可高可低
 1. 理论上可以替换可见的任意资源，更多用法请自行探索
-1. 目前只有windows版，需要linux、mac版的可以将7z替换成linux、unix版的，<br>
-   并把bat改为由shell实现
